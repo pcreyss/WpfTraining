@@ -1,0 +1,88 @@
+﻿<Window x:Class="templates.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:templates"
+        mc:Ignorable="d"
+        x:Name="WINP"
+        Title="MainWindow" Height="450" Width="1000">
+    <Window.Resources>
+        <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBEE6FD"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF3C7FB1"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FF838383"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Button x:Name="b1" Content="Button" HorizontalAlignment="Left" Margin="25,25,0,0" VerticalAlignment="Top" Width="82" Height="30" Template="{DynamicResource ButtonControlTemplate1}" Click="b1_Click"/>
+        <TabControl HorizontalAlignment="Left" Height="329" Margin="228,45,0,0" VerticalAlignment="Top" Width="518">
+            <TabItem x:Name="tabitem1" Header="dependency object" Height="22" Margin="-2,-2,-2.4,0" VerticalAlignment="Bottom">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel>
+                        <TextBlock x:Name="tb1"></TextBlock>
+                        <TreeView x:Name="tv1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="fram elt">
+                <Grid Background="#FFE5E5E5">
+                    <TreeView x:Name="tv2" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="fram cont elt" HorizontalAlignment="Left" Height="22.4" VerticalAlignment="Top" Width="53.6">
+                <Grid Background="#FFE5E5E5">
+                    <TreeView x:Name="tv3" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel x:Name="sp1"  HorizontalAlignment="Left" Height="216" Margin="25,65,0,0" VerticalAlignment="Top" Width="180">
+            <Label>World</Label>
+            <ListView HorizontalAlignment="Left"  VerticalAlignment="Top" Height="138" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+                <ListViewItem Content="ListViewItem" Margin="0"/>
+                <ListViewItem Content="ListViewItem" Margin="0" Height="185" Width="168"/>
+            </ListView>
+        </StackPanel>
+        <TextBlock x:Name="tbl1" HorizontalAlignment="Left" Margin="127,25,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="36" Width="60"/>
+        <ListView x:Name="lv2" HorizontalAlignment="Left" Height="113" Margin="25,268,0,0" VerticalAlignment="Top" Width="180">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListBox x:Name="lbx1" HorizontalAlignment="Left" Height="100" Margin="791,89,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="b2" Content="hello" Margin="771,224,102.6,164"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="791,304,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>
